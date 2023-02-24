@@ -11,9 +11,8 @@ body{
   align-items: center;
   min-height: 100vh;
   margin: 0;
-}
+} 
 .container{
-  background-color: blueviolet;
   margin: 30px auto;
   width: 350px;
 }
@@ -24,6 +23,7 @@ body{
 .item-list li{
   background-color: cornsilk;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  padding: 20px;
   color: #333;
   display: flex;
   justify-content: space-between;

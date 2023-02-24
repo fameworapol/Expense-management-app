@@ -1,0 +1,9 @@
+.expense{
+    color: darkolivegreen;
+    border-right: 5px solid red;
+    text-align: center;
+    list-style-type: none;
+}
+.income{
+    border-right: 5px solid #2ccc71;
+}
