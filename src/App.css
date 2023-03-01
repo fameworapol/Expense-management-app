@@ -29,3 +29,20 @@ body{
   justify-content: space-between;
   margin-top: 10px;
 }
+.horizontal-menu{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  text-align: center;
+}
+.horizontal-menu li{
+  display: inline-block;
+}
+.horizontal-menu a{
+  color: white;
+  text-decoration: none;
+  padding: 16px;
+  display: block;
+}

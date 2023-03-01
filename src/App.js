@@ -1,11 +1,12 @@
 import './App.css';
+import React from 'react';
 import Item from './components/Item';
 import {v4 as uuidv4} from 'uuid';
 import FormComponent from './components/Form';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState , useReducer} from 'react';
 import DataContext from './data/DataContext';
-import { element } from 'prop-types';
 import ReportComponent from './components/reportComponent';
+import { BrowserRouter as Router,Routes,Route,Link, BrowserRouter } from 'react-router-dom';
 
 
 function Title() {
@@ -34,8 +35,19 @@ function App() {
   ]
   const [reportIncome, setreportIncome] = useState(0);
   const [reportExpense, setreportExpense] = useState(0);
-
+  const [showReport, setshowReport] = useState(false)
   const [Items, setItems] = useState(initData)
+
+  //useReducer
+  const reducer = (state,action)=>{
+    switch (action.type) {
+      case "SHOW":
+        return setshowReport(true)
+      case "HIDE":
+        return setshowReport(false)
+    }
+  }
+  const [result,dispatch] = useReducer(reducer,showReport)
 
   function onAddNewItem(newItem) {
     setItems((oldItem)=>{
@@ -77,12 +89,25 @@ function App() {
     }>
         <div className="container">
           <Title/>
-          <ReportComponent/>
-          <FormComponent onAddItem={onAddNewItem}/>
-          <Transactions items={Items}/>
+            <BrowserRouter>
+            <div>
+              <ul className='horizontal-menu'>
+                <li><Link to="/">ข้อมูลบัญชี</Link></li>
+                <li><Link to="/insert">บันทึกข้อมูล</Link></li>
+              </ul>
+              </div>
+              <Routes>
+                <Route path='/' element={<ReportComponent/>}/>
+                <Route path='/insert' element={<div>
+                  <FormComponent onAddItem={onAddNewItem}/>
+                  <Transactions items={Items}/>
+                </div>}/>
+              </Routes>
+            </BrowserRouter>
         </div>
     </DataContext.Provider>
   );
 } 
 
 export default App;
+
