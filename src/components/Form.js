@@ -13,7 +13,7 @@ function FormComponent(props) {
     }
 
     function inputAmount(event) {
-        setAmount(event.target.value)
+        setAmount(event.target.value) 
     }
 
     useEffect(() => {
